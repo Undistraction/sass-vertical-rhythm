@@ -6,7 +6,7 @@
     "Pedr Browne <pedr.browne@gmail.com>"
   ],
   "description": "Compass's vertical-rhythm module extracted",
-  "main": "sass/sass-vertical-rhythm/_sass-vertical-rhythm.scss",
+  "main": "sass/_sass-vertical-rhythm.scss",
   "keywords": [
     "sass",
     "vertical-rhythm",
