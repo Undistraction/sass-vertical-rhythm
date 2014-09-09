@@ -73,21 +73,18 @@ $relative-font-sizing: if($rhythm-unit == px, false, true);
 // @private Outputs rhythm values. For rem units, outputs pixel fallbacks
 // by default.
 @mixin output-rhythm($property, $values) {
-
-  @else {
-    $output: ();
-    @each $value in $values {
-      @if unit($value) == px {
-        // Ensure all pixel values are rounded to the nearest pixel.
-        $output: join($output, round($value));
-      }
-      @else {
-        $output: join($output, $value);
-      }
+  $output: ();
+  @each $value in $values {
+    @if unit($value) == px {
+      // Ensure all pixel values are rounded to the nearest pixel.
+      $output: join($output, round($value));
     }
-    #{$property}: $output;
+    @else {
+      $output: join($output, $value);
+    }
   }
-}
+  #{$property}: $output;
+  }
 
 // Establishes a font baseline for the given font-size.
 @mixin establish-baseline($font-size: $base-font-size) {
