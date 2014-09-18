@@ -1,0 +1,19 @@
+// Map keywords to values for clarity
+$rhythm-keywords: (
+  single:         1,
+  double:         2,
+  triple:         3,
+  quadruple:      4,
+  half:           0.5,
+  quarter:        0.25,
+  third:          0.33333333
+);
+
+// Ensure rhythm is a valid value
+@function parse-lines($value) {
+  // Check if it is a known keyword
+  @if (index(single double triple quadruple half third quarter, $value) != null){
+    $value: map-get($rhythm-keywords, $value);
+  }
+  @return $value;
+}

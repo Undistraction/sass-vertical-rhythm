@@ -1,4 +1,5 @@
 @import "sass-vertical-rhythm/units";
+@import "sass-vertical-rhythm/keywords";
 
 // The default font size for all text in pixels
 $base-font-size: 16px !default;
@@ -11,9 +12,6 @@ $base-line-height: 24px !default;
 // make calculating padding and margins impractical, and percentage borders are
 // not valid or supported in css.
 $rhythm-unit: 'em' !default;
-
-// Whether to output fallback values in px when using rem as the rhythm-unit.
-$rem-with-px-fallback: true !default;
 
 // Default values for rhythm borders properties.
 // Supports style alone eg. `solid` or list of style and color eg. `solid #aaa`;
@@ -47,9 +45,9 @@ $relative-font-sizing: if($rhythm-unit == px, false, true);
   @warn "$rhythm-unit must be `px`, `em` or `rem`.";
 }
 
-
 // Calculate rhythm units.
 @function rhythm($lines: 1, $font-size: $base-font-size, $offset: 0) {
+  $lines: parse-lines($lines);
   $rhythm: convert-length($lines * $base-line-height - $offset, $rhythm-unit, $font-size);
   @if unit($rhythm) == px {
     $rhythm: floor($rhythm);
